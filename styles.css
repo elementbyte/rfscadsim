@@ -219,6 +219,14 @@ body {
     margin-bottom: 5px;
 }
 
+/* Log Header (H3) Styling */
+.log-section h3 {
+    color: #fff;
+    margin-bottom: 15px; /* Adds space between "Log" title and entries */
+    font-size: 24px;
+    text-align: center;
+}
+
 /* Log Tag Styling */
 .log-tag {
     display: inline-block;
