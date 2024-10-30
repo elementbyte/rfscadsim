@@ -124,7 +124,7 @@
                 </h4>
 
                 <p style="font-size: 16px; margin-bottom: 15px;">
-                    Here are some basic commands to try:
+                    Here are some commands to try:
                 </p>
 
                 <ul style="list-style: none; padding: 0;">
@@ -175,14 +175,14 @@
                 <div class="incident-card" id="47657">
                     <h4>CAD #47657</h4>
                     <p><strong>Type:</strong> GRASS FIRE</p>
-                    <p><strong>Address:</strong> 123 Lake Road, Lake George</p>
+                    <p><strong>Address:</strong> BUNGENDORE RD X FED HWY BYWONG</p>
                     <p><strong>Narrative:</strong> INFT TRAVELLING DOWN FEDERAL HWY SAW SMOKE IN VIC OF GIVEN ADDRESS</p>
                 </div>
                 
                 <div class="incident-card" id="67890">
                     <h4>CAD #67890</h4>
                     <p><strong>Type:</strong> ASSIST AMBOS</p>
-                    <p><strong>Address:</strong> 45 Riverside Drive, Braidwood</p>
+                    <p><strong>Address:</strong> 45 RIVERSIDE DR, BRAIDWOOD</p>
                     <p><strong>Narrative:</strong> AMBOS REQ URGENT LIFT</p>
                 </div>
             </div>
@@ -324,7 +324,7 @@
             // Log the action
             const logEntry = document.createElement("div");
             logEntry.classList.add("log-message");
-            logEntry.innerHTML = highlightUnits(`${callsign} assigned to incident ${incidentId}`);
+            logEntry.innerHTML = highlightUnits(`${callsign} alerted to ${incidentId}`);
             log.prepend(logEntry);
         }
     }
