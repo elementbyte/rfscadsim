@@ -96,70 +96,78 @@
             <div class="bingo-item" id="LGWAMBO7B">LGWAMBO7B</div>
         </div>
     </div>
-        
-    <!-- Log and How-To Column -->
-    <div class="log-how-to-column">
-        <!-- Log Section (Top Half) -->
-        <div class="log-section">
-            <h3>Log</h3>
-            <div id="log"></div>
+
+           <!-- Log and How-To Column -->
+           <div class="log-how-to-column">
+            <!-- Log Section (Top Half) -->
+            <div class="log-section">
+                <h3>Log</h3>
+                <div id="log"></div>
+            </div>
+
+            <!-- How-To Guide Section (Bottom Half) -->
+            <div style="
+                max-width: 600px; 
+                margin: 40px auto; 
+                padding: 20px; 
+                background-color: #ffffff; 
+                border-radius: 8px; 
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+                font-family: Arial, sans-serif; 
+                color: #333;
+                text-align: center;">
+
+                <h3 style="margin-bottom: 10px; font-size: 24px; color: #2c3e50;">How-To Guide</h3>
+
+                <h4 style="margin-bottom: 20px; font-size: 18px; color: #7f8c8d; font-weight: normal;">
+                    Lake George Communications
+                </h4>
+
+                <p style="font-size: 16px; margin-bottom: 15px;">
+                    Here are some basic commands to try:
+                </p>
+
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 12px;">
+                        <code style="
+                            background-color: #f0f0f0; 
+                            padding: 5px 8px; 
+                            border-radius: 4px; 
+                            font-family: monospace;">
+                            callsign/s/status
+                        </code> – Update a unit’s status.
+                    </li>
+                    <li style="margin-bottom: 12px;">
+                        <code style="
+                            background-color: #f0f0f0; 
+                            padding: 5px 8px; 
+                            border-radius: 4px; 
+                            font-family: monospace;">
+                            callsign/m/message
+                        </code> – Add an operator comment to a unit.
+                    </li>
+                    <li style="margin-bottom: 12px;">
+                        <code style="
+                            background-color: #f0f0f0; 
+                            padding: 5px 8px; 
+                            border-radius: 4px; 
+                            font-family: monospace;">
+                            callsign/m/message;R
+                        </code> – Add a sitrep to the unit under their incident.
+                    </li>
+                    <li style="margin-bottom: 12px;">
+                        <code style="
+                            background-color: #f0f0f0; 
+                            padding: 5px 8px; 
+                            border-radius: 4px; 
+                            font-family: monospace;">
+                            callsign/ASS
+                        </code> – Assign a unit to an incident.
+                    </li>
+                </ul>
+            </div>
         </div>
-
-  <!-- How-To Guide Section (Bottom Half) -->
-<div style="
-max-width: 600px; 
-margin: 40px auto; 
-padding: 20px; 
-background-color: #ffffff; 
-border-radius: 8px; 
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-font-family: Arial, sans-serif; 
-color: #333;
-text-align: center;">
-
-<h3 style="margin-bottom: 10px; font-size: 24px; color: #2c3e50;">How-To Guide</h3>
-
-<h4 style="margin-bottom: 20px; font-size: 18px; color: #7f8c8d; font-weight: normal;">
-    Made at gunpoint by a Lake George Communications member
-</h4>
-
-<p style="font-size: 16px; margin-bottom: 15px;">
-    Here are some basic commands to try:
-</p>
-
-<ul style="list-style: none; padding: 0;">
-    <li style="margin-bottom: 12px;">
-        <code style="
-            background-color: #f0f0f0; 
-            padding: 5px 8px; 
-            border-radius: 4px; 
-            font-family: monospace;">
-            callsign/s/status
-        </code> – Update a unit’s status.
-    </li>
-    <li style="margin-bottom: 12px;">
-        <code style="
-            background-color: #f0f0f0; 
-            padding: 5px 8px; 
-            border-radius: 4px; 
-            font-family: monospace;">
-            callsign/m/message
-        </code> – Add an operator comment to a unit.
-    </li>
-    <li style="margin-bottom: 12px;">
-        <code style="
-            background-color: #f0f0f0; 
-            padding: 5px 8px; 
-            border-radius: 4px; 
-            font-family: monospace;">
-            callsign/m/message;R
-        </code> – Add a sitrep to the unit under their incident.
-    </li>
-</ul>
-</div>
-
-    
-    </div>
+        
         <div class="incidents-pane">
             <h3>Incidents</h3>
             <div class="incidents-grid" id="incidentsGrid">
@@ -169,15 +177,13 @@ text-align: center;">
                     <p><strong>Type:</strong> GRASS FIRE</p>
                     <p><strong>Address:</strong> 123 Lake Road, Lake George</p>
                     <p><strong>Narrative:</strong> INFT TRAVELLING DOWN FEDERAL HWY SAW SMOKE IN VIC OF GIVEN ADDRESS</p>
-
                 </div>
-        
+                
                 <div class="incident-card" id="67890">
                     <h4>CAD #67890</h4>
                     <p><strong>Type:</strong> ASSIST AMBOS</p>
                     <p><strong>Address:</strong> 45 Riverside Drive, Braidwood</p>
                     <p><strong>Narrative:</strong> AMBOS REQ URGENT LIFT</p>
-
                 </div>
             </div>
         </div>
@@ -190,123 +196,176 @@ text-align: center;">
 
     <script>
     var input = document.getElementById("commandInput");
-			input.addEventListener("keypress", function(event){
-				if (event.key === "Enter") {
-					event.preventDefault();
-					document.getElementById("cmdButton").click();
-				}
-			});
-        window.onload = () => {
-            const resources = document.querySelectorAll('.bingo-item');
-            resources.forEach(item => item.style.backgroundColor = 'grey');
+    input.addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            document.getElementById("cmdButton").click();
+        }
+    });
+
+    function processCommand() {
+        const commandInput = document.getElementById("commandInput");
+        const log = document.getElementById("log");
+        const commandText = commandInput.value.trim();
+
+        if (commandText !== "") {
+            const parsedCommands = interpretCommand(commandText);
+
+            parsedCommands.forEach(logMessage => {
+                const logEntry = document.createElement("div");
+                logEntry.classList.add("log-message");
+                logEntry.innerHTML = highlightUnits(logMessage); // Highlight units in the log
+                log.prepend(logEntry); // Add new logs to the top
+            });
+
+            commandInput.value = "";
+        }
+    }
+
+    function interpretCommand(command) {
+        const [callsignsPart, commandType, statusOrMessage] = command.split('/');
+        if (!callsignsPart || !commandType) return [];
+
+        const callsigns = callsignsPart.split(',').map(c => c.trim()).filter(Boolean);
+        const logMessages = [];
+
+        if (commandType === 'S' && statusOrMessage) {
+            const statusString = getStatusString(statusOrMessage);
+            callsigns.forEach(callsign => {
+                updateResourceStatus(callsign, statusOrMessage);
+                logMessages.push(`${callsign}: Status updated to ${statusString}`);
+            });
+        } else if (commandType === 'M' && statusOrMessage) {
+            const [message, reportType] = statusOrMessage.split(';');
+            const tag = reportType === 'R' ? 'SITREP' : 'OPERATOR COMMENT';
+
+            callsigns.forEach(callsign => {
+                logMessages.push(`
+                    <div class="log-message">
+                        <div class="log-header">
+                            <span class="log-tag ${tag.replace(' ', '-')}">${tag}</span>
+                            <span class="timestamp">${getCurrentTime()}</span>
+                        </div>
+                        <span>${callsign}: ${message.trim()}</span>
+                    </div>
+                `);
+            });
+        } else if (commandType === 'ASS') {
+            showIncidentSelectionModal(callsigns[0]);
+        } else {
+            logMessages.push(`Invalid command: ${command}`);
+        }
+
+        return logMessages;
+    }
+
+    function showIncidentSelectionModal(callsign) {
+        const modalOverlay = document.createElement('div');
+        modalOverlay.classList.add('modal-overlay');
+        modalOverlay.onclick = () => {
+            closeModal(modalOverlay, modal);
+        };
+        document.body.appendChild(modalOverlay);
+
+        const modal = document.createElement('div');
+        modal.classList.add('modal');
+
+        const selectLabel = document.createElement('label');
+        selectLabel.textContent = `Select an incident for ${callsign}: `;
+        modal.appendChild(selectLabel);
+
+        const select = document.createElement('select');
+        select.id = 'incidentSelect';
+        document.querySelectorAll('.incident-card').forEach(incident => {
+            const option = document.createElement('option');
+            option.value = incident.id;
+            option.textContent = incident.querySelector('h4').textContent;
+            select.appendChild(option);
+        });
+        modal.appendChild(select);
+
+        const submitButton = document.createElement('button');
+        submitButton.textContent = 'Assign';
+        submitButton.style.marginLeft = '10px';
+        submitButton.onclick = () => {
+            const incidentId = document.getElementById('incidentSelect').value;
+            assignResourceToIncident(callsign, incidentId);
+            closeModal(modalOverlay, modal);
+        };
+        modal.appendChild(submitButton);
+
+        document.body.appendChild(modal);
+    }
+
+    function closeModal(modalOverlay, modal) {
+        document.body.removeChild(modal);
+        document.body.removeChild(modalOverlay);
+    }
+
+    function assignResourceToIncident(callsign, incidentId) {
+        const resourceElement = document.getElementById(callsign);
+        const log = document.getElementById("log");
+        if (resourceElement) {
+            // Change status to 'AL' (Alerted)
+            updateResourceStatus(callsign, 'AL');
+
+            // Move resource into the incident card
+            const incidentCard = document.getElementById(incidentId);
+            if (incidentCard) {
+                let incidentResources = incidentCard.querySelector('.incident-resources');
+                if (!incidentResources) {
+                    incidentResources = document.createElement('div');
+                    incidentResources.classList.add('incident-resources');
+                    incidentCard.appendChild(incidentResources);
+                }
+                incidentResources.appendChild(resourceElement);
+            }
+
+            // Log the action
+            const logEntry = document.createElement("div");
+            logEntry.classList.add("log-message");
+            logEntry.innerHTML = highlightUnits(`${callsign} assigned to incident ${incidentId}`);
+            log.prepend(logEntry);
+        }
+    }
+
+    function updateResourceStatus(callsign, status) {
+        const resourceElement = document.getElementById(callsign);
+        if (!resourceElement) return;
+
+        const statusColors = {
+            '1': 'yellow',
+            '3': 'black',
+            '4': 'green',
+            '5': 'grey',
+            '7': '#CF9FFF',
+            'AL': 'blue'
         };
 
-        function processCommand() {
-    const commandInput = document.getElementById("commandInput");
-    const log = document.getElementById("log");
-    const commandText = commandInput.value.trim();
-
-    if (commandText !== "") {
-        const parsedCommands = interpretCommand(commandText);
-
-        parsedCommands.forEach(logMessage => {
-            const logEntry = document.createElement("div");
-            logEntry.innerHTML = ` ${highlightUnits(logMessage)}`; // Highlight units in the log
-            log.prepend(logEntry); // Add new logs to the top
-        });
-
-        commandInput.value = "";
-    }
-}
-
-function highlightUnits(logMessage) {
-    // Regex to find unit identifiers that start with "LG"
-    const unitRegex = /\b(LG[A-Z0-9]*)\b/g;
-    return logMessage.replace(
-        unitRegex,
-        '<span class="highlight-unit">$1</span>'
-    );
-}
-
-function getCurrentTime() {
-    const now = new Date();
-    const hours = String(now.getHours()).padStart(2, '0');
-    const minutes = String(now.getMinutes()).padStart(2, '0');
-    const seconds = String(now.getSeconds()).padStart(2, '0');
-    return `${hours}:${minutes}:${seconds}`;
-}
-
-function interpretCommand(command) {
-    const [callsignsPart, commandType, statusOrMessage] = command.split('/');
-    const callsigns = callsignsPart.split(',');
-    const logMessages = [];
-
-    if (commandType === 'S') {
-        const statusString = getStatusString(statusOrMessage);
-        callsigns.forEach(callsign => {
-            updateResourceStatus(callsign.trim(), statusOrMessage);
-            logMessages.push(`
-                <div class="log-message">
-                    <div class="log-header">
-                        <span class="log-tag">STATUS</span>
-                        <span class="timestamp">${getCurrentTime()}</span>
-                    </div>
-                    <span>${callsign.trim()}: Status updated to ${statusString}</span>
-                </div>
-            `);
-        });
+        resourceElement.style.backgroundColor = statusColors[status] || 'grey';
+        resourceElement.style.color = status === '3' ? 'white' : 'black';
     }
 
-    if (commandType === 'M') {
-        const messageParts = statusOrMessage.split(';');
-        const message = messageParts[0].trim();
-        const tag = messageParts[1] === 'R' ? 'SITREP' : 'OPERATOR COMMENT';
-
-        callsigns.forEach(callsign => {
-            const logEntryHTML = `
-                <div class="log-message">
-                    <div class="log-header">
-                        <span class="log-tag ${tag.replace(' ', '-')}">${tag}</span>
-                        <span class="timestamp">${getCurrentTime()}</span>
-                    </div>
-                    <span>${callsign.trim()}: ${message}</span>
-                </div>
-            `;
-            logMessages.push(logEntryHTML);
-        });
+    function getStatusString(status) {
+        const statusMap = {
+            '1': 'responding',
+            '3': 'on scene',
+            '4': 'available',
+            '5': 'at station',
+            '7': 'not available',
+            'AL': 'alerted'
+        };
+        return statusMap[status] || 'unknown';
     }
 
-    return logMessages;
-}
+    function highlightUnits(text) {
+        return text.replace(/\b(LG\w+)\b/g, '<span class="highlight-unit">$1</span>');
+    }
 
-        function getStatusString(status) {
-            const statusMap = {
-                '1': 'responding',
-                '3': 'on scene',
-                '4': 'available',
-                '5': 'at station',
-                '7': 'not available',
-                'AL': 'alerted'
-            };
-            return statusMap[status] || 'unknown';
-        }
-
-        function updateResourceStatus(callsign, status) {
-            const resourceElement = document.getElementById(callsign);
-            if (!resourceElement) return;
-
-            const statusColors = {
-                '1': 'yellow',
-                '3': 'black',
-                '4': 'green',
-                '5': 'grey',
-                '7': '#CF9FFF',
-                'AL': 'blue'
-            };
-
-            resourceElement.style.backgroundColor = statusColors[status] || 'grey';
-            resourceElement.style.color = status === '03' ? 'white' : 'black';
-        }
+    function getCurrentTime() {
+        const now = new Date();
+        return now.toLocaleTimeString();
+    }
     </script>
 
 </body>
