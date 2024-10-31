@@ -162,15 +162,69 @@
                 </p>
 
                 <ul style="list-style: none; padding: 0;">
-                    <li style="margin-bottom: 12px;">
-                        <code style="
-                            background-color: #525252; 
-                            padding: 5px 8px; 
-                            border-radius: 4px; 
-                            font-family: monospace;">
-                            callsign/s/status
-                        </code> – Update a unit’s status.
-                    </li>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 12px;">
+                            <code style="
+                                background-color: #525252; 
+                                padding: 5px 8px; 
+                                border-radius: 4px; 
+                                font-family: monospace;">
+                                callsign/s/status
+                            </code> – Update a unit’s status.
+                        </li>
+                        <li style="margin-bottom: 12px;">
+                            <strong>Status Codes:</strong>
+                            <ul style="list-style: none; padding-left: 15px;">
+                                <li style="margin-bottom: 6px;">
+                                    <code style="
+                                        background-color: #525252; 
+                                        padding: 5px 8px; 
+                                        border-radius: 4px; 
+                                        font-family: monospace;">
+                                        1
+                                    </code> – responding
+                                </li>
+                                <li style="margin-bottom: 6px;">
+                                    <code style="
+                                        background-color: #525252; 
+                                        padding: 5px 8px; 
+                                        border-radius: 4px; 
+                                        font-family: monospace;">
+                                        3
+                                    </code> – on scene
+                                </li>
+                                <li style="margin-bottom: 6px;">
+                                    <code style="
+                                        background-color: #525252; 
+                                        padding: 5px 8px; 
+                                        border-radius: 4px; 
+                                        font-family: monospace;">
+                                        4
+                                    </code> – available
+                                </li>
+                                <li style="margin-bottom: 6px;">
+                                    <code style="
+                                        background-color: #525252; 
+                                        padding: 5px 8px; 
+                                        border-radius: 4px; 
+                                        font-family: monospace;">
+                                        5
+                                    </code>– at station
+                                </li>
+                                <li style="margin-bottom: 6px;">
+                                    <code style="
+                                        background-color: #525252; 
+                                        padding: 5px 8px; 
+                                        border-radius: 4px; 
+                                        font-family: monospace;">
+                                        7
+                                    </code> – not available
+                                </li>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    
                     <li style="margin-bottom: 12px;">
                         <code style="
                             background-color: #525252; 
@@ -199,6 +253,7 @@
                         </code> – Assign a unit to an incident.
                     </li>
                 </ul>
+                <p><strong>Refresh to reset.</strong></p>
             </div>
         </div>
         
@@ -244,13 +299,18 @@
 
         if (commandText !== "") {
             const parsedCommands = interpretCommand(commandText);
+                parsedCommands.forEach(logMessage => {
+        const logEntry = document.createElement("div");
+        logEntry.classList.add("log-message");
+        logEntry.innerHTML = highlightUnits(logMessage); // Highlight units in the log
 
-            parsedCommands.forEach(logMessage => {
-                const logEntry = document.createElement("div");
-                logEntry.classList.add("log-message");
-                logEntry.innerHTML = highlightUnits(logMessage); // Highlight units in the log
-                log.prepend(logEntry); // Add new logs to the top
-            });
+        // Add the new log entry to the top
+        log.prepend(logEntry);
+
+        // Scroll to the latest entry
+        log.scrollTop = 0; // If latest entries are added at the top, set scroll to top
+    });
+
 
             commandInput.value = "";
         }
