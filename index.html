@@ -7,9 +7,38 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="version">Version 1.0.1</div>
+    <div class="version">Version 1.0.2</div>
 
     <div class="container">
+    <!-- Disclaimer Modal -->
+    <div id="disclaimerOverlay" class="disclaimer-overlay">
+        <div class="disclaimer-box">
+            <h3>Welcome</h3>
+            <p>This system is provided by the Lake George Communications Brigade. 
+                It is volunteer run and designed to teach others on using CAD command line.
+                It is in no way affiliated with or sponsored by the RFS or Fujitsu.</p>
+                <p> -----  </p>
+                <p>Suggestions can be sent <a href="mailto:christopherwall-vol@rfs.nsw.gov.au">here</a>.</p>
+            <button id="disclaimerOkButton">OK</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Get the disclaimer elements
+            const disclaimerOverlay = document.getElementById("disclaimerOverlay");
+            const okButton = document.getElementById("disclaimerOkButton");
+    
+            // Display the disclaimer when the page loads
+            disclaimerOverlay.style.display = "flex";
+    
+            // Close the disclaimer when the OK button is clicked
+            okButton.addEventListener("click", function () {
+                disclaimerOverlay.style.display = "none";
+            });
+        });
+    </script>
+    
         <div class="resources-grid" id="bingoGrid">
             <h3>All Resources</h3>
             <div class="bingo-items-container">
