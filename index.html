@@ -321,7 +321,7 @@
             const statusString = getStatusString(statusOrMessage);
             callsigns.forEach(callsign => {
                 updateResourceStatus(callsign, statusOrMessage);
-                logMessages.push(`${callsign}: Status updated to ${statusString}`);
+                logMessages.push(`${callsign}: status updated to ${statusString}`);
             });
         } else if (commandType === 'M' && statusOrMessage) {
             const [message, reportType] = statusOrMessage.split(';');
