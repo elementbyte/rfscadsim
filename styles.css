@@ -117,6 +117,7 @@ body {
 #log {
     flex-grow: 1; /* Allow the log to expand and take available space */
     display: flex;
+    padding: 10px;
     flex-direction: column;
     gap: 10px;
     overflow-y: auto;

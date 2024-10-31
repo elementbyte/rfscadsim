@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="version">Version 1.0.3 Beta</div>
+    <div class="version">Version 1.0.4 Beta</div>
 
     
     <div class="container">
@@ -149,11 +149,7 @@
             color: #ffffff;
             text-align: center;">
 
-                <h3 style="margin-bottom: 10px; font-size: 24px; color: #ffffff;">CAD Command Line Simulator</h3>
-
-                <h4 style="margin-bottom: 20px; font-size: 18px; color: #7f8c8d; font-weight: normal;">
-                    Lake George Communications
-                </h4>
+                <h3 style="margin-bottom: 10px; font-size: 24px; color: #ffffff;">LG COMMS // Command Line Simulator</h3>
 
                 <p style="font-size: 16px; margin-bottom: 15px;">
                     Here are some commands to try:
@@ -345,7 +341,7 @@
         } else if (commandType === 'ASS') {
             showIncidentSelectionModal(callsigns[0]);
         } else {
-            logMessages.push(`Invalid command: ${command}`);
+            logMessages.push(`Invalid command: ${command}. Did you use caps? Try rewriting your command.`);
         }
 
         return logMessages;
