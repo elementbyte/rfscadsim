@@ -149,7 +149,7 @@
             color: #ffffff;
             text-align: center;">
 
-                <h3 style="margin-bottom: 10px; font-size: 24px; color: #ffffff;">LG COMMS // Command Line Simulator</h3>
+                <h3 style="margin-bottom: 10px; font-size: 24px; color: #ffffff;">Command Line Simulator</h3>
 
                 <p style="font-size: 16px; margin-bottom: 15px;">
                     Here are some commands to try:
@@ -390,49 +390,83 @@
         document.body.removeChild(modalOverlay);
     }
 
-    function assignResourceToIncident(callsign, incidentId) {
-        const resourceElement = document.getElementById(callsign);
-        const log = document.getElementById("log");
-        if (resourceElement) {
-            // Change status to 'AL' (Alerted)
-            updateResourceStatus(callsign, 'AL');
+ // Initialize the map to track incident assignments
+const unitIncidentMap = {};
 
-            // Move resource into the incident card
-            const incidentCard = document.getElementById(incidentId);
-            if (incidentCard) {
-                let incidentResources = incidentCard.querySelector('.incident-resources');
-                if (!incidentResources) {
-                    incidentResources = document.createElement('div');
-                    incidentResources.classList.add('incident-resources');
-                    incidentCard.appendChild(incidentResources);
-                }
-                incidentResources.appendChild(resourceElement);
+function assignResourceToIncident(callsign, incidentId) {
+    const resourceElement = document.getElementById(callsign);
+    const log = document.getElementById("log");
+    if (resourceElement) {
+        // Change status to 'AL' (Alerted)
+        updateResourceStatus(callsign, 'AL');
+
+        // Move resource into the incident card
+        const incidentCard = document.getElementById(incidentId);
+        if (incidentCard) {
+            let incidentResources = incidentCard.querySelector('.incident-resources');
+            if (!incidentResources) {
+                incidentResources = document.createElement('div');
+                incidentResources.classList.add('incident-resources');
+                incidentCard.appendChild(incidentResources);
             }
+            incidentResources.appendChild(resourceElement);
 
-            // Log the action
+            // Track the incident assignment in the map
+            unitIncidentMap[callsign] = incidentId;
+        }
+
+        // Log the action
+        const logEntry = document.createElement("div");
+        logEntry.classList.add("log-message");
+        logEntry.innerHTML = highlightUnits(`${callsign} alerted to incident #${incidentId}`);
+        log.prepend(logEntry);
+    }
+}
+
+function updateResourceStatus(callsign, status) {
+    const resourceElement = document.getElementById(callsign);
+    if (!resourceElement) return;
+
+    const statusColors = {
+        '1': 'yellow',
+        '3': 'black',
+        '4': 'green',
+        '5': 'grey',
+        '7': '#CF9FFF',
+        'AL': 'blue'
+    };
+
+    resourceElement.style.backgroundColor = statusColors[status] || 'grey';
+    resourceElement.style.color = status === '3' ? 'white' : 'black';
+
+    // Move resource back to bingo card if status is 'available' or 'at station'
+    if (status === '4' || status === '5') {
+        moveResourceToBingoCard(callsign);
+    }
+}
+
+function moveResourceToBingoCard(callsign) {
+    const resourceElement = document.getElementById(callsign);
+    const bingoGrid = document.getElementById("bingoGrid").querySelector(".bingo-items-container");
+    const log = document.getElementById("log");
+
+    if (resourceElement && bingoGrid) {
+        bingoGrid.appendChild(resourceElement); // Move unit back to bingo card
+
+        // Check if the unit was assigned to an incident
+        const incidentId = unitIncidentMap[callsign];
+        if (incidentId) {
+            // Log the clearance message
             const logEntry = document.createElement("div");
             logEntry.classList.add("log-message");
-            logEntry.innerHTML = highlightUnits(`${callsign} alerted to ${incidentId}`);
+            logEntry.innerHTML = highlightUnits(`${callsign} clear of incident #${incidentId}`);
             log.prepend(logEntry);
+
+            // Remove the incident assignment from the map
+            delete unitIncidentMap[callsign];
         }
     }
-
-    function updateResourceStatus(callsign, status) {
-        const resourceElement = document.getElementById(callsign);
-        if (!resourceElement) return;
-
-        const statusColors = {
-            '1': 'yellow',
-            '3': 'black',
-            '4': 'green',
-            '5': 'grey',
-            '7': '#CF9FFF',
-            'AL': 'blue'
-        };
-
-        resourceElement.style.backgroundColor = statusColors[status] || 'grey';
-        resourceElement.style.color = status === '3' ? 'white' : 'black';
-    }
+}
 
     function getStatusString(status) {
         const statusMap = {
